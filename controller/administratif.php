@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
     
     $id = $_GET['id'];
     
-    $conn = mysqli_connect('localhost', 'root', '', 'pointage1');
+    $conn = mysqli_connect('localhost', 'root', '', 'condidature');
     // fetch file to download from database
     $sql = "SELECT * FROM professeurs WHERE id='".$id."'";
     $result = mysqli_query($conn, $sql);

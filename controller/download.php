@@ -33,7 +33,7 @@ if ($uploadOk == 0) {
 */
 
 // connect to database
-$conn = mysqli_connect('localhost', 'root', '', 'pointage1');
+$conn = mysqli_connect('localhost', 'root', '', 'condidature');
 
 $sql = "SELECT * FROM files";
 $result = mysqli_query($conn, $sql);
