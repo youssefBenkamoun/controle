@@ -60,7 +60,7 @@ if ($_SESSION["employe"]) {
                             } else
                                 echo 'no-photo.png'
                                 ?>" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html"><?php
+        <h1 class="text-light"><a href="auth.html"><?php
                                                     if (isset($_SESSION['nom'])) {
                                                         echo $_SESSION['nom'].' '.$_SESSION['prenom'];
                                                     }
