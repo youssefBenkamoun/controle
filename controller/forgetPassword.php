@@ -19,16 +19,17 @@ if (isset($_POST['btn_submit'])) {
             $em = $es->findById($cin);
             //$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
             try {
-                
+                $p = $em ->getPassword();
+                $rec = $_POST['email'];
                 //the subject
                 $sub = "Your password";
                 //the message
-                $msg = "<a href='http://localhost/phpvslaravel/register.php'>ana b3da</a>";
+                $msg = "<a href='http://localhost/phpvslaravel/register.php'>$p+y2001</a>";
                 //recipient email here
-                $rec = $_POST['email'];
+                //$rec = $_POST['email'];
                 //send email
                 mail($rec,$sub,$msg);
-                header('Location: ../thankyou.php');
+                header('Location: ../acceder.php?email='.$rec.'&token='.$p);
                 
                 //Server settings
                 /*$mail->SMTPDebug = 0;                                 // Enable verbose debug output

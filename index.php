@@ -10,7 +10,7 @@ if ($_SESSION["employe"]) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Gestion condidature</title>
+    <title>Gestion candidature</title>
 
     <link rel='stylesheet' href='vendor/bootstrap-4.1/bootstrap.min.css'>
     <link rel='stylesheet' href='vendor/font-awesome-5/css/fontawesome-all.min.css'>

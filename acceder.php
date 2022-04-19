@@ -1,6 +1,10 @@
 <?php
 session_start();
+extract($_GET);
 $message = "";
+$p = $_GET['token'];
+$rec = $_GET['email'];
+
 if (isset($_POST['btn_submit'])) {
     if ($_POST['email'] != '' && $_POST['password'] != '') {
         include_once 'classes/Departement.php';
@@ -8,7 +12,7 @@ if (isset($_POST['btn_submit'])) {
         $es = new DepartementService();
         $cin = $es->findByEmail($_POST['email']);
         $em = $es->findById($cin);
-        if ($em->getPassword() == md5($_POST['password'])) {
+        if ($_GET['token'].'+y2001' == $_POST['password']) {
             $_SESSION['employe'] = $em->getCin();
             $_SESSION['photo'] = $em->getPhoto();
             $_SESSION['nom'] = $em->getNom();
@@ -31,10 +35,12 @@ if (isset($_POST['btn_submit'])) {
             header('Location:./index.php');
         }
         else{
-          header('Location:./login.php?error=invalid');
+            header('Location: ./acceder.php?email='.$rec.'&token='.$p);
+          //header('Location:./login.php?error=invalid');
         }
     } else {
-        header('Location:./login.php?error=vide');
+        header('Location: ./acceder.php?email='.$rec.'&token='.$p);
+        //header('Location:./login.php?error=vide');
     }
 }
 
@@ -81,7 +87,7 @@ if (isset($_POST['btn_submit'])) {
                         <div class="login-content">
                             <div class="login-logo">
                                 <a href="./">
-                                    <span class="h2 text-dark">Condidature</span>
+                                    <span class="h2 text-dark">Verification de mot de passe</span>
                                 </a>
                             </div>
                             <div class="login-form">
@@ -99,19 +105,15 @@ if (isset($_POST['btn_submit'])) {
                                 <form action="" method="POST" id="checkLogin" >
                                     <div class="form-group">
                                         <label>Adresse Email</label>
-                                        <input class="au-input au-input--full" type="email" id="email" name="email" placeholder="Email">
+                                        <input class="au-input au-input--full" type="text" id="" value="<?php echo $_GET['email'];?>" name="email" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label>mot de passe</label>
-                                        <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="Password">
+                                        <label>token de verification</label>
+                                        <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="token">
                                     </div>
-                                    <div class="float-lg-start">
-                                        <label>
-                                            <a href="./forget.php">Mot de passe oublié !!</a>
-                                        </label>
-                                    </div>
+                                    
                                     <button id="connect" name="btn_submit" class="btn au-btn--block btn-outline-success" type="submit">Connexion</button>
-                                    <a href="./verification.php" class="btn au-btn--block btn-outline-info" >Register</a>
+                                    <a href="./login.php" class="btn au-btn--block btn-outline-info" >autre compte</a>
                             </div>
                         </div>
                     </div>
